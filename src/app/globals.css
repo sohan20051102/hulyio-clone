@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Shadcn/UI Base Colors (Dark Theme) */
+  --color-background: #1A1B23;
+  --color-foreground: #FFFFFF;
+
+  --color-card: #303236;
+  --color-card-foreground: #FFFFFF;
+
+  --color-popover: #303236;
+  --color-popover-foreground: #FFFFFF;
+
+  --color-primary: #4F8EF7; /* Accent Blue */
+  --color-primary-foreground: #FFFFFF;
+
+  --color-secondary: #303236;
+  --color-secondary-foreground: #FFFFFF;
+
+  --color-muted: #303236;
+  --color-muted-foreground: #A0A0A0;
+
+  --color-accent: #4F8EF7; /* Accent Blue */
+  --color-accent-foreground: #FFFFFF;
+
+  --color-destructive: #FF4757; /* Accent Red */
+  --color-destructive-foreground: #FFFFFF;
+
+  --color-border: rgba(255,255,255,0.1);
+  --color-input: #303236;
+  --color-ring: #4F8EF7;
+
+  --color-chart-1: #FF6B35; /* Accent Orange */
+  --color-chart-2: #4F8EF7; /* Accent Blue */
+  --color-chart-3: #FF4757; /* Accent Red */
+  --color-chart-4: #2ED573; /* Success Green */
+  --color-chart-5: #A0A0A0; /* Text Secondary */
+
+  --color-sidebar: #303236;
+  --color-sidebar-foreground: #FFFFFF;
+  --color-sidebar-primary: #4F8EF7;
+  --color-sidebar-primary-foreground: #FFFFFF;
+  --color-sidebar-accent: #1A1B23;
+  --color-sidebar-accent-foreground: #FFFFFF;
+  --color-sidebar-border: rgba(255,255,255,0.1);
+  --color-sidebar-ring: #4F8EF7;
+
+  --radius-lg: 16px; /* Medium border radius */
+  --radius-md: 8px;  /* Small border radius */
+  --radius-sm: 8px;  /* Small border radius */
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  /* Huly Specific Colors */
+  --color-background-primary: #1A1B23;
+  --color-background-secondary: #303236;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #A0A0A0;
+  --color-accent-blue: #4F8EF7;
+  --color-accent-orange: #FF6B35;
+  --color-accent-red: #FF4757;
+  --color-success-green: #2ED573;
+
+  /* Huly Specific Fonts */
+  --font-display: "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Responsive breakpoints */
+  --breakpoint-xs: 0px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+
+  :root {
+    /* Shadcn/UI Base Colors (Dark Theme) */
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --popover: var(--color-popover);
+    --popover-foreground: var(--color-popover-foreground);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-foreground);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-foreground);
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-destructive-foreground);
+    --border: var(--color-border);
+    --input: var(--color-input);
+    --ring: var(--color-ring);
+    --chart-1: var(--color-chart-1);
+    --chart-2: var(--color-chart-2);
+    --chart-3: var(--color-chart-3);
+    --chart-4: var(--color-chart-4);
+    --chart-5: var(--color-chart-5);
+    --radius: var(--radius-lg); /* Default radius for Shadcn components */
+    --sidebar-background: var(--color-sidebar);
+    --sidebar-foreground: var(--color-sidebar-foreground);
+    --sidebar-primary: var(--color-sidebar-primary);
+    --sidebar-primary-foreground: var(--color-sidebar-primary-foreground);
+    --sidebar-accent: var(--color-sidebar-accent);
+    --sidebar-accent-foreground: var(--color-sidebar-accent-foreground);
+    --sidebar-border: var(--color-sidebar-border);
+    --sidebar-ring: var(--color-sidebar-ring);
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-background-primary);
+    color: var(--color-text-primary);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-text-primary);
+  }
+
+  h1 {
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+  }
+
+  .text-display-lg {
+    font-size: 72px;
+    line-height: 80px;
+    font-weight: 700;
+  }
+
+  .text-display-md {
+    font-size: 64px;
+    line-height: 72px;
+    font-weight: 700;
+  }
+
+  .text-body-lg {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+
+  .text-body-md {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+
+  .text-body-sm {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+
+  .text-caption {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  /* Responsive utility classes */
+  .px-safe {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  @media (min-width: 640px) {
+    .px-safe {
+      padding-left: max(1.5rem, env(safe-area-inset-left));
+      padding-right: max(1.5rem, env(safe-area-inset-right));
+    }
+  }
+
+  /* Animation utilities */
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+  }
+
+  .animate-wiggle {
+    animation: wiggle 3s ease-in-out infinite;
+  }
+
+  @keyframes infinityScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  .animate-infinityScroll {
+    animation: infinityScroll 40s linear infinite;
+  }
+}
+
+@layer utilities {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
